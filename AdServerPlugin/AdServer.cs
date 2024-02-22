@@ -1,7 +1,7 @@
 
 using System;
 
-namespace AdServer
+namespace AdGrowth
 {
     public class AdServer
     {
