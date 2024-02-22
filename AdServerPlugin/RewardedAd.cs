@@ -1,11 +1,11 @@
 
 using System;
 
-namespace AdServer
+namespace AdGrowth
 {
-    public class InterstitialAd
+    public class RewardedAd
     {
-        private readonly IInterstitialAd _ad;
+        private readonly IRewardedAd _ad;
 
         public event Action<AdRequestException> OnFailedToLoad;
         public event Action OnDismissed;
@@ -13,22 +13,22 @@ namespace AdServer
         public event Action<string> OnFailedToShow;
         public event Action OnImpression;
 
-        public InterstitialAd(string unitId)
+        public RewardedAd(string unitId)
         {
-            _ad = InterstitialAdFactory.GetInterstitialAd(unitId);
+            _ad = RewardedAdFactory.GetRewardedAd(unitId);
             ConfigureEvents();
         }
 
-        public void Load(Action<IInterstitialAd> OnLoad)
+        public void Load(Action<IRewardedAd> OnLoad)
         {
-
             _ad.OnLoad += OnLoad;
             _ad.Load(OnLoad);
         }
 
-        public void Show()
+        public void Show(Action<RewardItem> OnEarnedReward)
         {
-            _ad.Show();
+            _ad.OnEarnedReward += OnEarnedReward;
+            _ad.Show(OnEarnedReward);
         }
 
         public bool IsLoaded()
@@ -44,8 +44,6 @@ namespace AdServer
 
         private void ConfigureEvents()
         {
-
-
             _ad.OnFailedToLoad += delegate (AdRequestException exception)
             {
                 if (OnFailedToLoad != null)
@@ -75,6 +73,7 @@ namespace AdServer
                 if (OnImpression != null)
                     OnImpression();
             };
+
         }
     }
 
