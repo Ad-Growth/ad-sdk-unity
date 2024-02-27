@@ -1,7 +1,9 @@
 using System;
 
-public interface IAdServer
+public abstract class IAdServer
 {
-    public void initialize(Action OnInit, Action<SDKInitException> OnFailed);
+    abstract public bool isInitialized { get; }
+    abstract public IClientProfile clientProfile { get; }
+    public abstract void Initialize(Action OnInit, Action<SDKInitException> OnFailed);
 
 }

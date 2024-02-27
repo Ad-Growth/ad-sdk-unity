@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SDKInitException : Exception
+public class SDKInitException
 {
 
     public const string UNAUTHORIZED_CLIENT_KEY = "unauthorized_client_key";
@@ -16,8 +16,8 @@ public class SDKInitException : Exception
     // android overload
     public SDKInitException(AndroidJavaObject reason)
     {
-        this.code = reason.Call<string>("getCode");
-        this.message = reason.Call<string>("getMessage");
+        code = reason.Call<string>("getCode");
+        message = reason.Call<string>("getMessage");
     }
     // TODO: ios overload
     // public SDKInitException(object reason)

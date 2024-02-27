@@ -13,6 +13,7 @@ internal class AndroidRewardedAd : IRewardedAd
         _listener = new AndroidBaseListener<IRewardedAd>(REWARDED_LISTENER_PACKAGE, this);
         _ad = new AndroidJavaObject(CLASS_NAME, unitId);
         _ad.Call("setListener", _listener);
+        ConfigureEvents();
     }
 
     public override void Load(Action<IRewardedAd> OnLoad)

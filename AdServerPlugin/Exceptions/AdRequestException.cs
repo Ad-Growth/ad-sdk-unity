@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AdRequestException : AndroidJavaObject
+public class AdRequestException
 {
 
     public const string PLAYBACK_ERROR = "playback_error";
@@ -20,13 +20,15 @@ public class AdRequestException : AndroidJavaObject
     public readonly string code;
     public readonly object message = "";
 
-    public AdRequestException(AndroidJavaObject reason) : base("com.adgrowth.adserver.exceptions.AdRequestException", reason)
+    public AdRequestException(AndroidJavaObject reason)
     {
         code = reason.Call<string>("getCode");
         message = reason.Call<string>("getMessage");
     }
-    public AdRequestException(string code) : base("com.adgrowth.adserver.exceptions.AdRequestException", code)
+
+    public AdRequestException(string code)
     {
         this.code = code;
     }
+
 }
