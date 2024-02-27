@@ -108,21 +108,21 @@ public class AndroidBuildProcessor : IPostGenerateGradleAndroidProject
             string repositoriesBlock = "repositories";
 
             int startIndex = settingsGradleContents.IndexOf(dependencyResolutionManagementBlock);
-            if (startIndex != -1)
-            {
-                int repositoriesIndex = settingsGradleContents.IndexOf(repositoriesBlock, startIndex);
-                if (repositoriesIndex != -1)
-                {
-                    int insertIndex = settingsGradleContents.IndexOf("{", repositoriesIndex);
-                    if (insertIndex != -1)
-                    {
-                        insertIndex = settingsGradleContents.IndexOf("\n", insertIndex) + 1;
+            if (startIndex == -1) return;
 
-                        settingsGradleContents = settingsGradleContents.Insert(insertIndex, $"        {repository}\n");
-                        File.WriteAllText(settingsGradlePath, settingsGradleContents);
-                    }
-                }
-            }
+            int repositoriesIndex = settingsGradleContents.IndexOf(repositoriesBlock, startIndex);
+            if (repositoriesIndex == -1) return;
+
+            int insertIndex = settingsGradleContents.IndexOf("{", repositoriesIndex);
+            if (insertIndex == -1) return;
+
+            insertIndex = settingsGradleContents.IndexOf("\n", insertIndex) + 1;
+
+            settingsGradleContents = settingsGradleContents.Insert(insertIndex, $"        {repository}\n");
+            File.WriteAllText(settingsGradlePath, settingsGradleContents);
+
+
+
         }
     }
 
