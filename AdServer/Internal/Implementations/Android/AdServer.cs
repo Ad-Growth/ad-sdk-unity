@@ -31,7 +31,7 @@ internal class AndroidAdServer : IAdServer
 
     public override bool isInitialized
     {
-        get { return _javaAdServer.GetStatic<bool>("isInitialized"); }
+        get { return _javaAdServer.CallStatic<bool>("isInitialized"); }
     }
 
 }

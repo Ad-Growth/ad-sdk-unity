@@ -7,36 +7,36 @@ internal class AndroidClientAddress : IClientAddress
 
     internal AndroidClientAddress()
     {
-        _clientAddress = AndroidAdServer.GetAndroidJavaClass().GetStatic<AndroidJavaObject>("clientProfile").Get<AndroidJavaObject>("clientAddress");
+        _clientAddress = AndroidAdServer.GetAndroidJavaClass().CallStatic<AndroidJavaObject>("getClientProfile").Call<AndroidJavaObject>("getClientAddress");
     }
     public override double latitude
     {
-        get { return _clientAddress.Get<double>("latitude"); }
-        set { _clientAddress.Set("latitude", value); }
+        get { return _clientAddress.Call<double>("getLatitude"); }
+        set { _clientAddress.Call("setLatitude", value); }
     }
 
     public override double longitude
     {
-        get { return _clientAddress.Get<double>("longitude"); }
-        set { _clientAddress.Set("longitude", value); }
+        get { return _clientAddress.Call<double>("getLongitude"); }
+        set { _clientAddress.Call("setLongitude", value); }
     }
 
     public override string country
     {
-        get { return _clientAddress.Get<string>("country"); }
-        set { _clientAddress.Set("country", value); }
+        get { return _clientAddress.Call<string>("getCountry"); }
+        set { _clientAddress.Call("setCountry", value); }
     }
 
     public override string state
     {
-        get { return _clientAddress.Get<string>("state"); }
-        set { _clientAddress.Set("state", value); }
+        get { return _clientAddress.Call<string>("getState"); }
+        set { _clientAddress.Call("setState", value); }
     }
 
     public override string city
     {
-        get { return _clientAddress.Get<string>("city"); }
-        set { _clientAddress.Set("city", value); }
+        get { return _clientAddress.Call<string>("getCity"); }
+        set { _clientAddress.Call("setCity", value); }
     }
 
 }
