@@ -13,6 +13,7 @@ internal class AndroidInterstitialAd : IInterstitialAd
         _listener = new AndroidBaseListener<IInterstitialAd>(INTERSTITIAL_LISTENER_PACKAGE, this);
         _ad = new AndroidJavaObject(CLASS_NAME, unitId);
         _ad.Call("setListener", _listener);
+        ConfigureEvents();
     }
 
     public override void Load(Action<IInterstitialAd> OnLoad)

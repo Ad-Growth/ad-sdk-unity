@@ -12,6 +12,7 @@ public abstract class ICommonAd<T>
     public event Action<string> OnFailedToShow;
     public event Action OnImpression;
     public event Action OnDismissed;
+    public event Action<RewardItem> OnEarnedReward;
     public abstract void Destroy();
     public abstract bool IsLoaded();
     public abstract bool IsFailed();

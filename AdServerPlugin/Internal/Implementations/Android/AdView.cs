@@ -194,20 +194,12 @@ internal class AndroidAdView : IAdView
                     _unityView.Call("addView", _ad);
                 }
                 catch (Exception e)
-                {
-                    Debug.LogError(e);
-                    // TODO: handle it better?
-                    _listener.onFailedToLoad(new AdRequestException(AdRequestException.PLAYBACK_ERROR));
-                }
+                { Debug.LogError(e); }
 
             }));
         }
         catch (Exception e)
-        {
-            Debug.LogError(e);
-            // TODO: handle it better?
-            _listener.onFailedToLoad(new AdRequestException(AdRequestException.INTERNAL_ERROR));
-        }
+        { Debug.LogError(e); }
     }
 
 

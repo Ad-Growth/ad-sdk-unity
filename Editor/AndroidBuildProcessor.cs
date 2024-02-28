@@ -102,28 +102,25 @@ public class AndroidBuildProcessor : IPostGenerateGradleAndroidProject
         string repository = "maven { url 'https://jitpack.io' }";
         string settingsGradleContents = File.ReadAllText(settingsGradlePath);
 
-        if (!settingsGradleContents.Contains(repository))
-        {
-            string dependencyResolutionManagementBlock = "dependencyResolutionManagement";
-            string repositoriesBlock = "repositories";
+        if (settingsGradleContents.Contains(repository)) return;
 
-            int startIndex = settingsGradleContents.IndexOf(dependencyResolutionManagementBlock);
-            if (startIndex == -1) return;
+        string dependencyResolutionManagementBlock = "dependencyResolutionManagement";
+        string repositoriesBlock = "repositories";
 
-            int repositoriesIndex = settingsGradleContents.IndexOf(repositoriesBlock, startIndex);
-            if (repositoriesIndex == -1) return;
+        int startIndex = settingsGradleContents.IndexOf(dependencyResolutionManagementBlock);
 
-            int insertIndex = settingsGradleContents.IndexOf("{", repositoriesIndex);
-            if (insertIndex == -1) return;
+        if (startIndex == -1) return;
 
-            insertIndex = settingsGradleContents.IndexOf("\n", insertIndex) + 1;
+        int repositoriesIndex = settingsGradleContents.IndexOf(repositoriesBlock, startIndex);
+        if (repositoriesIndex == -1) return;
 
-            settingsGradleContents = settingsGradleContents.Insert(insertIndex, $"        {repository}\n");
-            File.WriteAllText(settingsGradlePath, settingsGradleContents);
+        int insertIndex = settingsGradleContents.IndexOf("{", repositoriesIndex);
+        if (insertIndex == -1) return;
 
+        insertIndex = settingsGradleContents.IndexOf("\n", insertIndex) + 1;
 
-
-        }
+        settingsGradleContents = settingsGradleContents.Insert(insertIndex, $"        {repository}\n");
+        File.WriteAllText(settingsGradlePath, settingsGradleContents);
     }
 
     private void UpdateGradleProperties(string gradlePropertiesPath)
