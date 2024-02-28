@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdServerPlugin", "AdServerPlugin\AdServerPlugin.csproj", "{A4684F91-F04B-4000-8B7F-324003D4DDD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdServerPlugin", "AdServer\AdServerPlugin.csproj", "{A4684F91-F04B-4000-8B7F-324003D4DDD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdServerEditor", "Editor\AdServerEditor.csproj", "{4FFEAE8C-93D2-4345-9F23-D2CF49BD5447}"
 EndProject
