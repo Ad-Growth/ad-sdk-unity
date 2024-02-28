@@ -13,13 +13,13 @@
 	
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<DebugType>portable</DebugType>
-		<OutputPath>..\build\Debug\Editor</OutputPath>
+		<OutputPath>..\build\Debug\AdServer</OutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>none</DebugType>
 		<GenerateDependencyFile>false</GenerateDependencyFile>
-		<OutputPath>..\build\Release\Editor</OutputPath>
+		<OutputPath>..\build\Release\AdServer</OutputPath>
 	</PropertyGroup>
 	
 </Project>
