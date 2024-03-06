@@ -24,7 +24,7 @@ internal class AndroidInterstitialAd : IInterstitialAd
 
     public override void Show()
     {
-        _ad?.Call("show", _activity);
+        AndroidActivityHelper.RunOnUIThread(() => { _ad?.Call("show", _activity); });
     }
 
     public override bool IsLoaded()
