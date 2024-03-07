@@ -183,23 +183,20 @@ internal class AndroidAdView : IAdView
 
     public override void Load()
     {
-        try
-        {
-            _activity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
-            {
-                try
-                {
-                    _unityView = _activity.Call<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
-                    _ad.Call("setLayoutParams", _layoutParams);
-                    _unityView.Call("addView", _ad);
-                }
-                catch (Exception e)
-                { Debug.LogError(e); }
 
-            }));
-        }
-        catch (Exception e)
-        { Debug.LogError(e); }
+        AndroidActivityHelper.RunOnUIThread(() =>
+        {
+            try
+            {
+                _unityView = _activity.Call<AndroidJavaObject>("getWindow").Call<AndroidJavaObject>("getDecorView");
+                _ad.Call("setLayoutParams", _layoutParams);
+                _unityView.Call("addView", _ad);
+            }
+            catch (Exception e)
+            { Debug.LogError(e); }
+
+        });
+
     }
 
 

@@ -25,7 +25,7 @@ internal class AndroidRewardedAd : IRewardedAd
     public override void Show(Action<RewardItem> OnEarnedReward)
     {
         _listener.OnEarnedReward += OnEarnedReward;
-        _ad?.Call("show", _activity);
+        AndroidActivityHelper.RunOnUIThread(() => { _ad?.Call("show", _activity); });
     }
 
     public override bool IsLoaded()
