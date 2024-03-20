@@ -4,8 +4,8 @@ using UnityEngine;
 public class AdServerSettings
 {
     public string AdServerKey = "12345678-aaaa-xxxx-yyyy-zzzzzzzzzzzz";
-    public string AdServerGoogleKey = "ca-app-pub-3940256099942544~3347511713";
-    public string AdSdkVersion = "1.1.+";
+    public string AdServerGoogleKey = "ca-app-pub-0000000000000000~0000000000";
+    public string AdSdkVersion = "f62d3d5903";
     public bool AutoUpdateManifest = true;
     public bool AutoUpdateBuildGradle = true;
     public bool AutoUpdateSettingsGradle = true;
